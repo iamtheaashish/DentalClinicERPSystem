@@ -1,1 +1,1 @@
-# ClinicERPSystem
+# DentalClinicERPSystem
