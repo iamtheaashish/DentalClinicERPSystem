@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|d:\\documents\\dentalclinicerpsystem\\dentalclinicerpsystem\\dentalclinicerp.core\\entities\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|solutionrelative:dentalclinicerp.core\\entities\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|d:\\documents\\dentalclinicerpsystem\\dentalclinicerpsystem\\dentalclinicerp.core\\entities\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|solutionrelative:dentalclinicerp.core\\entities\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|d:\\documents\\dentalclinicerpsystem\\dentalclinicerpsystem\\dentalclinicerp.core\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76506876-284C-4BD2-8633-F6771BE90F39}|DentalClinicERP.Core\\DentalClinicERP.Core.csproj|solutionrelative:dentalclinicerp.core\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuditLog.cs",
+              "DocumentMoniker": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\AuditLog.cs",
+              "RelativeDocumentMoniker": "DentalClinicERP.Core\\Entities\\AuditLog.cs",
+              "ToolTip": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\AuditLog.cs",
+              "RelativeToolTip": "DentalClinicERP.Core\\Entities\\AuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-15T10:54:46.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "DentalClinicERP.Core\\Entities\\ApplicationRole.cs",
+              "ToolTip": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\ApplicationRole.cs",
+              "RelativeToolTip": "DentalClinicERP.Core\\Entities\\ApplicationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-15T10:52:53.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "DentalClinicERP.Core\\Entities\\ApplicationUser.cs",
+              "ToolTip": "D:\\Documents\\DentalClinicERPSystem\\DentalClinicERPSystem\\DentalClinicERP.Core\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "DentalClinicERP.Core\\Entities\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-15T10:48:28.398Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

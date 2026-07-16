@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DentalClinicERP.Core/DentalClinicERP.Core.csproj" />
+  <Project Path="DentalClinicERP.Data/DentalClinicERP.Data.csproj" />
+  <Project Path="DentalClinicERP.Web/DentalClinicERP.Web.csproj" />
+</Solution>
