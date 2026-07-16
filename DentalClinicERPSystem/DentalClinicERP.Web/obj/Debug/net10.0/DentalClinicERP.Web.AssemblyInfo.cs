@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DentalClinicERP.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b91d4b4bee0c3a1e69085dc3a01ed2390ae5d5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca79aca9bc95e6c2071d7ad0baaf46b0945266af")]
 [assembly: System.Reflection.AssemblyProductAttribute("DentalClinicERP.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DentalClinicERP.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
