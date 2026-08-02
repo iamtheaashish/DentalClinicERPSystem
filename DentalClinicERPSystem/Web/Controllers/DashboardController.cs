@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels;
 
 namespace Web.Controllers;
 
 public class DashboardController : Controller
 {
-    public IActionResult Index()
+    private readonly IDashboardService _dashboardService;
+    public DashboardController(IDashboardService dashboardService)
     {
-        var model = new DashboardViewModel();
-        return View(model);
+        _dashboardService = dashboardService;
+    }
+    public async Task<IActionResult> Index()
+    {
+        var viewModel = new DashboardViewModel();
+
+        return View(viewModel);
     }
 }
