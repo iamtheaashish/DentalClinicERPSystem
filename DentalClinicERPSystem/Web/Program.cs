@@ -1,6 +1,8 @@
 using DentalClinicERPSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using DentalClinicERPSystem.Domain.Entities;
+using Business.Interfaces;
+using Business.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
 
 var app = builder.Build();
 

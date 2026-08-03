@@ -1,9 +1,8 @@
 ﻿using Business.DTO;
 using Business.Interfaces;
 using DentalClinicERPSystem.DataAccess.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using DentalClinicERPSystem.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Services;
 
@@ -16,28 +15,107 @@ public class PatientService : IPatientService
         _context = context;
     }
 
-    public Task<bool> DeletePatientAsync(int id)
+    public async Task<bool> DeletePatientAsync(int id)
     {
-        throw new NotImplementedException();
+        var patient = await _context.Patients.FindAsync(id);
+
+        if (patient == null)
+        {
+            return false;
+        }
+
+        _context.Patients.Remove(patient);
+
+        var result = await _context.SaveChangesAsync();
+
+        return result > 0;
     }
 
-    Task<int> IPatientService.CreatePatientAsync(CreatePatientDto createPatientDto)
+    public async Task<int> CreatePatientAsync(CreatePatientDto createPatientDto)
     {
-        throw new NotImplementedException();
+        var patient = new Patient
+        {
+            AadhaarId = createPatientDto.AadhaarId,
+            FirstName = createPatientDto.FirstName,
+            LastName = createPatientDto.LastName,
+            Email = createPatientDto.Email,
+            PhoneN1 = createPatientDto.PhoneN1,
+            PhoneN2 = createPatientDto.PhoneN2,
+            EmergencyPhone = createPatientDto.EmergencyPhone,
+            HomeAddress = createPatientDto.HomeAddress,
+            DateOfBirth = createPatientDto.DateOfBirth,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _context.Patients.AddAsync(patient);
+
+        await _context.SaveChangesAsync();
+
+        return patient.Id;
     }
 
-    Task<IEnumerable<PatientDto>> IPatientService.GetAllPatientsAsync()
+    public async Task<IEnumerable<PatientDto>> GetAllPatientsAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Patients
+            .AsNoTracking()
+            .Select(p => new PatientDto
+            {
+                Id = p.Id,
+                AadhaarId = p.AadhaarId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Email = p.Email,
+                PhoneN1 = p.PhoneN1,
+                PhoneN2 = p.PhoneN2,
+                EmergencyPhone = p.EmergencyPhone,
+                HomeAddress = p.HomeAddress,
+                DateOfBirth = p.DateOfBirth,
+                CreatedAt = p.CreatedAt,
+            }).ToListAsync();
     }
 
-    Task<PatientDto?> IPatientService.GetPatientByIdAsync(int id)
+    public async Task<PatientDto?> GetPatientByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Patients
+            .AsNoTracking()
+            .Where(p => p.Id == id)
+            .Select(p => new PatientDto
+            {
+                Id = p.Id,
+                AadhaarId = p.AadhaarId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Email = p.Email,
+                PhoneN1 = p.PhoneN1,
+                PhoneN2 = p.PhoneN2,
+                EmergencyPhone = p.EmergencyPhone,
+                HomeAddress = p.HomeAddress,
+                DateOfBirth = p.DateOfBirth,
+                CreatedAt = p.CreatedAt
+            }).FirstOrDefaultAsync();
     }
 
-    Task<bool> IPatientService.UpdatePatientAsync(int id, UpdatePatientDto updatePatientDto)
+    public async Task<bool> UpdatePatientAsync(int id, UpdatePatientDto updatePatientDto)
     {
-        throw new NotImplementedException();
+        var patient = await _context.Patients.FindAsync(id);
+        if (patient == null)
+        {
+            return false;
+        }
+
+        patient.AadhaarId = updatePatientDto.AadhaarId;
+        patient.FirstName = updatePatientDto.FirstName;
+        patient.LastName = updatePatientDto.LastName;
+        patient.Email = updatePatientDto.Email;
+        patient.PhoneN1 = updatePatientDto.PhoneN1;
+        patient.PhoneN2 = updatePatientDto.PhoneN2;
+        patient.EmergencyPhone = updatePatientDto.EmergencyPhone;
+        patient.HomeAddress = updatePatientDto.HomeAddress;
+        patient.DateOfBirth = updatePatientDto.DateOfBirth;
+        // we're not touching created at and id
+
+        var result = await _context.SaveChangesAsync();
+
+        return result > 0;
     }
 }
