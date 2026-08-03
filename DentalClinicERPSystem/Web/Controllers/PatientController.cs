@@ -39,6 +39,12 @@ public class PatientController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var patientDetails = await _patientService.GetPatientByIdAsync(id);
+        return View(patientDetails);
+    }
 
 
 }
