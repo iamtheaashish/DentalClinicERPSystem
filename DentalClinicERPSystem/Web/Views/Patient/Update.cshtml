@@ -1,0 +1,131 @@
+﻿@model Business.DTO.UpdatePatientDto
+
+@{
+    ViewData["Title"] = "Update Patient";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="text-primary fw-bold mb-1">
+                        <i class="bi bi-person-gear me-2"></i>Update Patient
+                    </h2>
+                    <p class="text-muted mb-0">Modify patient records and contact details.</p>
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Back to List
+                    </a>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h5 class="card-title mb-0">
+                        <i class="bi bi-pencil-square me-2"></i>Patient Information (ID: #@Model.Id)
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Update" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-4" role="alert"></div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <h6 class="text-secondary fw-bold mb-3">
+                            <i class="bi bi-person me-2"></i>Personal Details
+                        </h6>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <label asp-for="FirstName" class="form-label fw-semibold"></label>
+                                <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                                <span asp-validation-for="FirstName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="LastName" class="form-label fw-semibold"></label>
+                                <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                                <span asp-validation-for="LastName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="DateOfBirth" class="form-label fw-semibold"></label>
+                                <input asp-for="DateOfBirth" type="date" class="form-control" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="AadhaarId" class="form-label fw-semibold"></label>
+                                <input asp-for="AadhaarId" class="form-control font-monospace" placeholder="12-digit Aadhaar Number" maxlength="12" />
+                                <span asp-validation-for="AadhaarId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input asp-for="Email" class="form-control" placeholder="patient@example.com" />
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 text-muted" />
+
+                        <h6 class="text-secondary fw-bold mb-3">
+                            <i class="bi bi-telephone me-2"></i>Contact & Address
+                        </h6>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <label asp-for="PhoneN1" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                                    <input asp-for="PhoneN1" class="form-control" placeholder="10-digit primary phone" maxlength="10" />
+                                </div>
+                                <span asp-validation-for="PhoneN1" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="PhoneN2" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+                                    <input asp-for="PhoneN2" class="form-control" placeholder="Optional phone number" maxlength="10" />
+                                </div>
+                                <span asp-validation-for="PhoneN2" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="EmergencyPhone" class="form-label fw-semibold text-danger"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-danger-subtle text-danger"><i class="bi bi-exclamation-triangle-fill"></i></span>
+                                    <input asp-for="EmergencyPhone" class="form-control border-danger-subtle" placeholder="Emergency contact" maxlength="10" />
+                                </div>
+                                <span asp-validation-for="EmergencyPhone" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <label asp-for="HomeAddress" class="form-label fw-semibold"></label>
+                                <textarea asp-for="HomeAddress" class="form-control" rows="3" placeholder="Enter complete home address"></textarea>
+                                <span asp-validation-for="HomeAddress" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                            <a asp-action="Index" class="btn btn-light border px-4">Cancel</a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-check-lg me-1"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
