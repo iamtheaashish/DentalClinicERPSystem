@@ -1,0 +1,45 @@
+name: Dental Clinic ERP - CI Build & Test
+
+on:
+  push:
+    branches: [ "main", "master", "develop" ]
+  pull_request:
+    branches: [ "main", "master", "develop" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout repository code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step 2: Setup .NET SDK & enable caching
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    # Step 3: Restore NuGet Packages
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    # Step 4: Build Solution
+    - name: Build Solution
+      run: dotnet build --configuration Release --no-restore
+
+    # Step 5: Run Unit/Integration Tests
+    - name: Run Tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
+
+    # Step 6: Publish Web App (Prepares output for deployment)
+    - name: Publish Web App
+      run: dotnet publish DentalClinicERPSystem.Web/DentalClinicERPSystem.Web.csproj -c Release -o ./publish --no-build
+
+    # Step 7: Upload Build Artifacts
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: web-app-build
+        path: ./publish
