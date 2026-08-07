@@ -1,4 +1,6 @@
 name: Dental Clinic ERP - CI Build & Test
+permissions:
+  contents: read
 
 on:
   push:
