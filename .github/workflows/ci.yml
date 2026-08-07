@@ -24,7 +24,7 @@ jobs:
 
     # Step 3: Restore NuGet Packages
     - name: Restore Dependencies
-      run: dotnet restore
+      run: dotnet restore /DentalClinicERPSystem/DentalClinicERPSystem.slnx
 
     # Step 4: Build Solution
     - name: Build Solution
