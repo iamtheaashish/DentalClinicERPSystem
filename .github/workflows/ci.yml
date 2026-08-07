@@ -36,7 +36,7 @@ jobs:
 
     #  Upload Web App
     - name: Upload Web App
-      run: dotnet publish Web/Web.csproj -c Release -o ./publish --no-build
+      run: dotnet publish Web/Web.csproj -c Release -o bin/Release/ --no-build
       working-directory: DentalClinicERPSystem/
 
     # Step 7: Upload Build Artifacts
