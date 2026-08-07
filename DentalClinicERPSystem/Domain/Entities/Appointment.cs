@@ -9,6 +9,7 @@ namespace DentalClinicERPSystem.Domain.Entities
         public int Id { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a valid patient.")]
         public int PatientId { get; set; }
 
         [ForeignKey(nameof(PatientId))]

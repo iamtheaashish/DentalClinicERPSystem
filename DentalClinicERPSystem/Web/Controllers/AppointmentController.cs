@@ -23,4 +23,17 @@ public class AppointmentController : Controller
     {
         return View();
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(CreateAppointmentDto createAppointmentDto)
+    {
+        if(!ModelState.IsValid)
+        {
+            return View(createAppointmentDto);
+        }
+
+        await _appointmentService.CreateAppointmentAsync(createAppointmentDto);
+
+        return RedirectToAction(nameof(Index));
+    }
 }

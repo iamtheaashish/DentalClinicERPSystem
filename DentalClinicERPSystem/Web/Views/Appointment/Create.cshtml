@@ -1,1 +1,93 @@
-﻿
+﻿@using DentalClinicERPSystem.Domain.Entities
+@model Business.DTO.CreateAppointmentDto
+
+@{
+    ViewData["Title"] = "Add New Appointment";
+}
+
+<div class="container-fluid p-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="h3 mb-1 fw-bold text-dark">Add New Appointment</h2>
+            <p class="text-muted small mb-0">Enter the patient and their appointment with the doctor into the system.</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            ← Back to Appointments
+        </a>
+    </div>
+
+    <!-- Form Content -->
+    <form asp-action="Create" method="post" class="bg-white p-4 rounded-3 shadow-sm border-0">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label asp-for="PatientId" class="form-label fw-semibold text-secondary small"></label>
+                <input asp-for="PatientId" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="Patient ID" />
+                <span asp-validation-for="PatientId" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="DentistId" class="form-label fw-semibold text-secondary small"></label>
+                <input asp-for="DentistId" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="Dentist ID (Optional)" />
+                <span asp-validation-for="DentistId" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="ScheduledDateTime" class="form-label fw-semibold text-secondary small"></label>
+                <input asp-for="ScheduledDateTime" type="datetime-local" class="form-control form-control-lg bg-light border-0 fs-6" />
+                <span asp-validation-for="ScheduledDateTime" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="DurationInMinutes" class="form-label fw-semibold text-secondary small"></label>
+                <input asp-for="DurationInMinutes" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="30" />
+                <span asp-validation-for="DurationInMinutes" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="AppointmentType" class="form-label fw-semibold text-secondary small"></label>
+                <input asp-for="AppointmentType" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="e.g. Routine Checkup" />
+                <span asp-validation-for="AppointmentType" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Status" class="form-label fw-semibold text-secondary small"></label>
+                <select asp-for="Status"
+                        asp-items="Html.GetEnumSelectList<AppointmentStatus>()"
+                        class="form-select form-select-lg bg-light border-0 fs-6">
+                </select>
+                <span asp-validation-for="Status" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="ChiefComplaint" class="form-label fw-semibold text-secondary small"></label>
+                <textarea asp-for="ChiefComplaint"
+                          class="form-control bg-light border-0 fs-6"
+                          rows="3"
+                          placeholder="Reason for visit"></textarea>
+                <span asp-validation-for="ChiefComplaint" class="text-danger small"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="Notes" class="form-label fw-semibold text-secondary small"></label>
+                <textarea asp-for="Notes"
+                          class="form-control bg-light border-0 fs-6"
+                          rows="3"
+                          placeholder="Additional notes"></textarea>
+                <span asp-validation-for="Notes" class="text-danger small"></span>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+            <button type="submit" class="btn btn-primary px-4">Create Appointment</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
