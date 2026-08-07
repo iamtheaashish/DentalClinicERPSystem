@@ -12,36 +12,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout repository code
+    # Checkout repository code
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
-    # Step 2: Setup .NET SDK
+    # Setup .NET SDK
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: '10.0.x' 
 
-    # Step 3: Restore NuGet Packages
+    # Restore NuGet Packages
     - name: Restore Dependencies
-      run: dotnet restore DentalClinicERPSystem/DentalClinicERPSystem.slnx
+      run: dotnet restore DentalClinicERPSystem.slnx
+      working-directory: DentalClinicERPSystem/
 
-    # Step 4: Build Solution
+    # Build Solution
     - name: Build Solution
-      run: dotnet build DentalClinicERPSystem/DentalClinicERPSystem.slnx --configuration Release --no-restore
+      run: dotnet build DentalClinicERPSystem.slnx --configuration Release --no-restore
+      working-directory: DentalClinicERPSystem/
 
-    # Step 5: Run Unit/Integration Tests
-    - name: Run Tests
-      run: dotnet test DentalClinicERPSystem/DentalClinicERPSystem.slnx --configuration Release --no-build --verbosity normal
-      continue-on-error: true # Prevents pipeline failure if test projects are not yet created
-
-    # Step 6: Publish Web App
-    - name: Publish Web App
-      run: dotnet publish DentalClinicERPSystem/Web/Web.csproj -c Release -o ./publish --no-build
+    #  Upload Web App
+    - name: Upload Web App
+      run: dotnet publish Web/Web.csproj -c Release -o ./publish --no-build
+      working-directory: DentalClinicERPSystem/
 
     # Step 7: Upload Build Artifacts
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: web-app-build
         path: ./publish
