@@ -37,7 +37,7 @@ jobs:
 
     # Step 6: Publish Web App
     - name: Publish Web App
-      run: dotnet publish Web/Web.csproj -c Release -o ./publish --no-build
+      run: dotnet publish DentalClinicERPSystem/Web/Web.csproj -c Release -o ./publish --no-build
 
     # Step 7: Upload Build Artifacts
     - name: Upload Build Artifacts
