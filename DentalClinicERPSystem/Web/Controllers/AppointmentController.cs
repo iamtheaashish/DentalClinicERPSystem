@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.DTO;
+using Business.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
 
 public class AppointmentController : Controller
 {
+    private readonly IAppointmentService _appointmentService;
+    public AppointmentController(IAppointmentService appointmentService)
+    {
+        _appointmentService = appointmentService;
+    }
+
     public async Task<IActionResult> Index()
     {
-        return View();
+        var appointments = await _appointmentService.GetAllAppointmentsAsync();
+        return View(appointments);
     }
 
     [HttpGet]
