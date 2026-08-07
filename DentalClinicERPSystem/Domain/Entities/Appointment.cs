@@ -8,25 +8,21 @@ namespace DentalClinicERPSystem.Domain.Entities
         [Key]
         public int Id { get; set; }
 
-        // --- Patient Relationship ---
         [Required]
         public int PatientId { get; set; }
 
         [ForeignKey(nameof(PatientId))]
         public Patient Patient { get; set; } = null!;
 
-        // --- Timing & Schedule ---
         [Required]
         public DateTime ScheduledDateTime { get; set; }
 
         [Required]
-        public int DurationInMinutes { get; set; } = 30; // Default 30-minute time slot
+        public int DurationInMinutes { get; set; } = 30;
 
-        // Calculated property for ending time (not stored in DB)
         [NotMapped]
         public DateTime EndTime => ScheduledDateTime.AddMinutes(DurationInMinutes);
 
-        // --- Appointment Details ---
         [Required]
         [StringLength(100)]
         public string AppointmentType { get; set; } = string.Empty;
@@ -36,7 +32,7 @@ namespace DentalClinicERPSystem.Domain.Entities
         public string? ChiefComplaint { get; set; }
         // Reason for visit / symptoms (e.g., "Pain in upper right molar")
 
-        [StringLength(1000)]
+        [StringLength(500)]
         public string? Notes { get; set; }
         // Receptionist/Internal notes (e.g., "Patient prefers morning slots", "Requires wheelchair access")
 
@@ -44,14 +40,11 @@ namespace DentalClinicERPSystem.Domain.Entities
         [Required]
         public AppointmentStatus Status { get; set; } = AppointmentStatus.Scheduled;
 
-        // --- Dentist / Staff Reference ---
-        // Stored as string to match IdentityUser.Id
         public string? DentistId { get; set; }
 
         [ForeignKey(nameof(DentistId))]
         public ApplicationUser? Dentist { get; set; }
 
-        // --- Audit Field ---
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 

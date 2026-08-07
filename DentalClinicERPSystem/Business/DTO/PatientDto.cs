@@ -7,7 +7,7 @@ namespace Business.DTO;
 
 public class PatientDto
 {
-    [Key]
+    [Required]
     public int Id { get; set; }
 
     [Required]
