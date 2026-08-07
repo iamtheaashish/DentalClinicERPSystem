@@ -1,4 +1,4 @@
-name: Dental Clinic ERP - CI Build & Test
+name: Continuous Integration
 permissions:
   contents: read
 
@@ -10,7 +10,7 @@ on:
   workflow_dispatch: 
 
 jobs:
-  build-and-test:
+  build-and-upload:
     runs-on: ubuntu-latest
 
     steps:
