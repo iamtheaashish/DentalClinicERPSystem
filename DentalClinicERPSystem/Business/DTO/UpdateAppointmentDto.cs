@@ -7,7 +7,7 @@ public class UpdateAppointmentDto
 {
 
     [Required]
-    public DateTime ScheduledDateTime { get; set; }
+    public DateTime ScheduledDateTime { get; set; } = DateTime.Today;
 
     [Required]
     [Range(1, 480)]

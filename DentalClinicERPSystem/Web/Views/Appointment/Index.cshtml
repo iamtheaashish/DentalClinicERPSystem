@@ -7,7 +7,7 @@
         </div>
         <div>
             <a asp-controller="Appointment" asp-action="Create" class="btn btn-primary shadow-sm">
-                <i class="bi bi-plus-lg me-1"></i> Add New Appointment
+                <i class="bi bi-plus-lg me-1"></i> New Appointment
             </a>
         </div>
     </div>
@@ -17,7 +17,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Patient Id</th>
+                    <th>Patient</th>
                     <th>Scheduled</th>
                     <th>Duration</th>
                     <th>Status</th>
@@ -40,7 +40,7 @@
                             <td>@item.Id</td>
                             <td>@item.PatientId</td>
                             <td>@item.ScheduledDateTime.ToString("hh:mm tt, dd MMM yyyy")</td>
-                            <td>@item.DurationInMinutes</td>
+                            <td>@item.DurationInMinutes minutes</td>
                             <td>@item.Status</td>
                             <td>@item.CreatedAt</td>
                             <td class="text-center">

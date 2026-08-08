@@ -21,4 +21,7 @@ public interface IPatientService
 
     // Delete patient
     Task<bool> DeletePatientAsync(int id);
+
+    // 7 Days Old Patient
+    Task<IEnumerable<PatientLookup>> GetRecentPatientAsync();
 }

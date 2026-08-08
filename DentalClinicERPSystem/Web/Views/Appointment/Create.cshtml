@@ -25,7 +25,13 @@
 
             <div class="col-md-6">
                 <label asp-for="PatientId" class="form-label fw-semibold text-secondary small"></label>
-                <input asp-for="PatientId" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="Patient ID" />
+
+                <select asp-for="PatientId"
+                        asp-items="@(new SelectList(Model.Patients, "Id", "FirstName"))"
+                        class="form-select form-select-lg bg-light border-0 fs-6">
+                    <option value="">Select Patient</option>
+                </select>
+
                 <span asp-validation-for="PatientId" class="text-danger small"></span>
             </div>
 

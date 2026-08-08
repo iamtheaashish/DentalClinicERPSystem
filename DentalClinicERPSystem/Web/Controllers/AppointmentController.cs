@@ -7,9 +7,11 @@ namespace Web.Controllers;
 public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;
-    public AppointmentController(IAppointmentService appointmentService)
+    private readonly IPatientService _patientService;
+    public AppointmentController(IAppointmentService appointmentService, IPatientService patientService)
     {
         _appointmentService = appointmentService;
+        _patientService = patientService;
     }
 
     public async Task<IActionResult> Index()
@@ -21,7 +23,14 @@ public class AppointmentController : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-        return View();
+        var patients = await _patientService.GetRecentPatientAsync();
+
+        var model = new CreateAppointmentDto
+        {
+            Patients = patients
+        };
+
+        return View(model);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]

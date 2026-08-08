@@ -118,4 +118,18 @@ public class PatientService : IPatientService
 
         return result > 0;
     }
+
+    public async Task<IEnumerable<PatientLookup>> GetRecentPatientAsync()
+    {
+        var sevenDaysAgo = DateTime.UtcNow.AddDays(-7);
+
+        var patients = await _context.Patients
+            .Where(p => p.CreatedAt >= sevenDaysAgo)
+            .Select(p => new PatientLookup
+            {
+                Id = p.Id,
+                FirstName = p.FirstName
+            }).ToListAsync();
+        return patients;
+    }
 }

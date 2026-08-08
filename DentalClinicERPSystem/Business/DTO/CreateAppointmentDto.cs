@@ -9,7 +9,7 @@ public class CreateAppointmentDto
     public int PatientId { get; set; }
 
     [Required]
-    public DateTime ScheduledDateTime { get; set; }
+    public DateTime ScheduledDateTime { get; set; } = DateTime.Today;
 
     [Required]
     [Range(1, 480)]
@@ -31,4 +31,5 @@ public class CreateAppointmentDto
 
     public string? DentistId { get; set; }
 
+    public IEnumerable<PatientLookup>? Patients { get; set; }
 }
