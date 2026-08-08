@@ -52,6 +52,7 @@ public class AppointmentService : IAppointmentService
         {
             Id = p.Id,
             PatientId = p.PatientId,
+            PatientName = p.Patient.FirstName,
             ScheduledDateTime = p.ScheduledDateTime,
             DurationInMinutes = p.DurationInMinutes,
             AppointmentType = p.AppointmentType,
@@ -59,16 +60,47 @@ public class AppointmentService : IAppointmentService
             DentistId = p.DentistId,
             CreatedAt = p.CreatedAt,
         }).ToListAsync();
-
     }
 
     public async Task<AppointmentDto?> GetAppointmentByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Appointments
+            .AsNoTracking()
+            .Where(p => p.Id == id)
+            .Select(p => new AppointmentDto
+            {
+                Id = p.Id,
+                PatientId = p.PatientId,
+                PatientName = p.Patient.FirstName + " " + p.Patient.LastName,
+                ScheduledDateTime =  p.ScheduledDateTime,
+                DurationInMinutes = p.DurationInMinutes,
+                AppointmentType = p.AppointmentType,
+                ChiefComplaint = p.ChiefComplaint,
+                Notes = p.Notes,
+                Status = p.Status,
+                DentistId = p.DentistId,
+                CreatedAt = p.CreatedAt,                
+            }).FirstOrDefaultAsync();
     }
 
     public async Task<bool> UpdateAppointmentAsync(int id, UpdateAppointmentDto updateAppointmentDto)
     {
-        throw new NotImplementedException();
+        var appointment = await _context.Appointments.FindAsync(id);
+        if (appointment == null)
+        {
+            return false;
+        }
+
+        appointment.ScheduledDateTime = updateAppointmentDto.ScheduledDateTime;
+        appointment.DurationInMinutes = updateAppointmentDto.DurationInMinutes;
+        appointment.AppointmentType = updateAppointmentDto.AppointmentType;
+        appointment.ChiefComplaint = updateAppointmentDto.ChiefComplaint;
+        appointment.Notes = updateAppointmentDto.Notes;
+        appointment.DentistId = updateAppointmentDto.DentistId;
+
+        var result = await _context.SaveChangesAsync();
+
+        return result > 0;
+
     }
 }

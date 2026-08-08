@@ -10,6 +10,8 @@ public class AppointmentDto
     [Required]
     public int PatientId { get; set; }
 
+    public string PatientName { get; set; } = string.Empty;
+
     [Required]
     public DateTime ScheduledDateTime { get; set; }
 

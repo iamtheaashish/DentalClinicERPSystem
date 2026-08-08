@@ -45,4 +45,50 @@ public class AppointmentController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+        if(appointment == null)
+        {
+            return NotFound();
+        }
+        return View(appointment);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Update(int id)
+    {
+        var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+        if (appointment == null)
+        {
+            return NotFound();
+        }
+        var updateDto = new UpdateAppointmentDto
+        {
+            ScheduledDateTime = appointment.ScheduledDateTime,
+            DurationInMinutes = appointment.DurationInMinutes,
+            AppointmentType = appointment.AppointmentType,
+            ChiefComplaint = appointment.ChiefComplaint,
+            Notes = appointment.Notes,
+            Status = appointment.Status,
+            DentistId = appointment.DentistId
+        };
+        return View(updateDto);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Update(int id, UpdateAppointmentDto updateAppointmentDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(updateAppointmentDto);
+        }
+        await _appointmentService.UpdateAppointmentAsync(id, updateAppointmentDto);
+        return RedirectToAction(nameof(Index));
+    }
+
+
 }
