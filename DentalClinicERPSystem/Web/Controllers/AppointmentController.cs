@@ -90,5 +90,33 @@ public class AppointmentController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+
+        if (appointment == null)
+        {
+            return NotFound();
+        }
+
+        return View(appointment);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+        if (appointment == null)
+        {
+            return NotFound();
+        }
+
+        await _appointmentService.DeleteAppointmentAsync(id);
+
+        return RedirectToAction(nameof(Index));
+    }
+
 
 }

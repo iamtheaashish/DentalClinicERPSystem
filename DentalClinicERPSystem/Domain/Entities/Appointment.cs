@@ -52,11 +52,8 @@ namespace DentalClinicERPSystem.Domain.Entities
     public enum AppointmentStatus
     {
         Scheduled = 1,
-        Confirmed = 2,
-        InQueue = 3,      // Patient arrived at clinic waiting room
-        InProgress = 4,   // Patient inside dentist room
-        Completed = 5,
-        Cancelled = 6,
-        NoShow = 7        // Patient missed appointment without cancelling
+        Completed = 2,
+        Cancelled = 3,
+        NoShow = 4        
     }
 }

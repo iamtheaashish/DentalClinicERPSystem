@@ -41,7 +41,19 @@ public class AppointmentService : IAppointmentService
 
     public async Task<bool> DeleteAppointmentAsync(int id)
     {
-        throw new NotImplementedException();
+        var appointment = await _context.Appointments.FindAsync(id);
+
+        if (appointment == null)
+        {
+            return false;
+        }
+
+        _context.Appointments.Remove(appointment);
+
+        var result = await _context.SaveChangesAsync();
+
+        return result > 0;
+    
     }
 
     public async Task<IEnumerable<AppointmentDto>> GetAllAppointmentsAsync()
