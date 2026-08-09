@@ -2,8 +2,9 @@
 using Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Controllers;
+namespace Web.Areas.Reception.Controllers;
 
+[Area("Reception")]
 public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;

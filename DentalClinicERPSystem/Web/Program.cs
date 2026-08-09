@@ -1,6 +1,5 @@
 using DentalClinicERPSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
-using DentalClinicERPSystem.Domain.Entities;
 using Business.Interfaces;
 using Business.Services;
 
@@ -37,9 +36,12 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{area=Reception}/{controller=Dashboard}/{action=Index}/{id?}");
 
 
 app.Run();

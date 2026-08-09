@@ -1,9 +1,9 @@
 ﻿using Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Web.ViewModels;
 
-namespace Web.Controllers;
+namespace Web.Areas.Reception.Controllers;
 
+[Area("Reception")]
 public class DashboardController : Controller
 {
     private readonly IDashboardService _dashboardService;
@@ -13,8 +13,6 @@ public class DashboardController : Controller
     }
     public async Task<IActionResult> Index()
     {
-        var viewModel = new DashboardViewModel();
-
-        return View(viewModel);
+        return View();
     }
 }

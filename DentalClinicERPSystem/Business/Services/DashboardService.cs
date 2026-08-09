@@ -1,4 +1,5 @@
-﻿using Business.Interfaces;
+﻿using Business.DTO;
+using Business.Interfaces;
 using DentalClinicERPSystem.DataAccess.Data;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,4 @@ public class DashboardService : IDashboardService
     {
         _context = context;
     }
-
 }

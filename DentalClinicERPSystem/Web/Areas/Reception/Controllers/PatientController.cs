@@ -3,8 +3,9 @@ using Business.Interfaces;
 using DentalClinicERPSystem.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Controllers;
+namespace Web.Areas.Reception.Controllers;
 
+[Area("Reception")]
 public class PatientController : Controller
 {
     private readonly IPatientService _patientService;
