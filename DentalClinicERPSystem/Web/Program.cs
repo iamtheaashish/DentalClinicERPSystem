@@ -4,6 +4,7 @@ using Business.Interfaces;
 using Business.Services;
 using Microsoft.AspNetCore.Identity;
 using Web.Identity;
+using DentalClinicERPSystem.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services
-    .AddDefaultIdentity<IdentityUser>(options =>
+    .AddDefaultIdentity<ApplicationUser>(options =>
     {
         // Password
         options.Password.RequiredLength = 8;
@@ -50,6 +51,9 @@ using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     await IdentitySeeder.SeedRolesAsync(roleManager);
+
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    await IdentitySeeder.SeedAdminAsync(userManager);
 }
 
 // Configure the HTTP request pipeline.
