@@ -12,6 +12,16 @@ namespace Business.Services;
 public class AppointmentService : IAppointmentService
 {
     private readonly ApplicationDbContext _context;
+
+    private static DateTime ToUtc(DateTime value)
+    {
+        return value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Utc)
+        };
+    }
     
     public AppointmentService(ApplicationDbContext context)
     {
@@ -24,7 +34,7 @@ public class AppointmentService : IAppointmentService
         {
             PatientId = createAppointmentDto.PatientId,
             DentistId = createAppointmentDto.DentistId,
-            ScheduledDateTime = createAppointmentDto.ScheduledDateTime,
+            ScheduledDateTime = ToUtc(createAppointmentDto.ScheduledDateTime),
             DurationInMinutes = createAppointmentDto.DurationInMinutes,
             AppointmentType = createAppointmentDto.AppointmentType,
             Status = createAppointmentDto.Status,
@@ -103,7 +113,7 @@ public class AppointmentService : IAppointmentService
             return false;
         }
 
-        appointment.ScheduledDateTime = updateAppointmentDto.ScheduledDateTime;
+        appointment.ScheduledDateTime = ToUtc(updateAppointmentDto.ScheduledDateTime);
         appointment.DurationInMinutes = updateAppointmentDto.DurationInMinutes;
         appointment.AppointmentType = updateAppointmentDto.AppointmentType;
         appointment.ChiefComplaint = updateAppointmentDto.ChiefComplaint;
