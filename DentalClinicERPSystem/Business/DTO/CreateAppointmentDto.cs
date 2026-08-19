@@ -9,7 +9,7 @@ public class CreateAppointmentDto
     public int PatientId { get; set; }
 
     [Required]
-    public DateTime ScheduledDateTime { get; set; } = DateTime.Today;
+    public DateTime ScheduledDateTime { get; set; } = DateTime.UtcNow;
 
     [Required]
     [Range(1, 480)]
