@@ -17,6 +17,13 @@ public class AccountController : Controller
         _signInManager = signInManager;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (!ModelState.IsValid)

@@ -1,0 +1,141 @@
+﻿@model Web.Models.CreateUserViewModel
+
+@{
+    ViewData["Title"] = "Add New User";
+}
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="h3 mb-1 fw-bold text-dark">Add New User</h2>
+            <p class="text-muted small mb-0">
+                Create a new system user and assign their role.
+            </p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            ← Back to Users
+        </a>
+    </div>
+
+    <form asp-action="Create" method="post"
+          class="bg-white p-4 rounded-3 shadow-sm border-0">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3"></div>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label asp-for="User.FirstName"
+                       class="form-label fw-semibold text-secondary small">
+                    First Name
+                </label>
+
+                <input asp-for="User.FirstName"
+                       class="form-control form-control-lg bg-light border-0 fs-6"
+                       placeholder="First Name" />
+
+                <span asp-validation-for="User.FirstName"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="User.LastName"
+                       class="form-label fw-semibold text-secondary small">
+                    Last Name
+                </label>
+
+                <input asp-for="User.LastName"
+                       class="form-control form-control-lg bg-light border-0 fs-6"
+                       placeholder="Last Name" />
+
+                <span asp-validation-for="User.LastName"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="User.Email"
+                       class="form-label fw-semibold text-secondary small">
+                    Email
+                </label>
+
+                <input asp-for="User.Email"
+                       type="email"
+                       class="form-control form-control-lg bg-light border-0 fs-6"
+                       placeholder="user@example.com" />
+
+                <span asp-validation-for="User.Email"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="User.Password"
+                       class="form-label fw-semibold text-secondary small">
+                    Password
+                </label>
+
+                <input asp-for="User.Password"
+                       type="password"
+                       class="form-control form-control-lg bg-light border-0 fs-6"
+                       placeholder="Enter password" />
+
+                <span asp-validation-for="User.Password"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="User.Role"
+                       class="form-label fw-semibold text-secondary small">
+                    Role
+                </label>
+
+                <select asp-for="User.Role"
+                        asp-items="@(new SelectList(Model.Roles))"
+                        class="form-select form-select-lg bg-light border-0 fs-6">
+                    <option value="">Select Role</option>
+                </select>
+
+                <span asp-validation-for="User.Role"
+                      class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-semibold text-secondary small">
+                    Account Status
+                </label>
+
+                <div class="form-check form-switch mt-2">
+                    <input asp-for="User.IsActive"
+                           class="form-check-input" />
+
+                    <label asp-for="User.IsActive"
+                           class="form-check-label">
+                        Active User
+                    </label>
+                </div>
+
+                <span asp-validation-for="User.IsActive"
+                      class="text-danger small"></span>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+            <a asp-action="Index"
+               class="btn btn-outline-secondary px-4">
+                Cancel
+            </a>
+
+            <button type="submit"
+                    class="btn btn-primary px-4">
+                Create User
+            </button>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

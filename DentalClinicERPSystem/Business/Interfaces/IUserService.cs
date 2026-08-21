@@ -1,4 +1,5 @@
 using Business.DTO;
+using Microsoft.AspNetCore.Identity;
 
 namespace Business.Interfaces;
 
@@ -8,11 +9,10 @@ public interface IUserService
 
     Task<UserListDto?> GetUserByIdAsync(string id);
 
-    Task<bool> CreateUserAsync(CreateUserDto dto);
+    Task<IdentityResult> CreateUserAsync(CreateUserDto dto);
+    Task<IdentityResult> UpdateUserAsync(UpdateUserDto dto);
 
-    Task<bool> UpdateUserAsync(UpdateUserDto dto);
+    Task<IdentityResult> DeactivateUserAsync(string id);
 
-    Task<bool> DeactivateUserAsync(string id);
-
-    Task<bool> ActivateUserAsync(string id);
+    Task<IdentityResult> ActivateUserAsync(string id);
 }
