@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Areas.Reception.Controllers;
 
-[Authorize(Roles = "Reception , Admin")]
+[Area("Reception")]
+[Authorize(Roles = "Reception,Admin,Dentist")]
 public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;

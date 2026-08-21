@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers;
 
-[Authorize(Roles = "Reception , Admin")]
+[Authorize(Roles = "Reception,Admin,Dentist")]
 public class DashboardController : Controller
 {
     private readonly IDashboardService _dashboardService;
