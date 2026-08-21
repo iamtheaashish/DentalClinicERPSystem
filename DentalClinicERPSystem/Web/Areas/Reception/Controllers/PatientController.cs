@@ -1,11 +1,12 @@
 ﻿using Business.DTO;
 using Business.Interfaces;
 using DentalClinicERPSystem.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Areas.Reception.Controllers;
 
-[Area("Reception")]
+[Authorize(Roles = "Reception , Admin")]
 public class PatientController : Controller
 {
     private readonly IPatientService _patientService;

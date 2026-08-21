@@ -1,10 +1,11 @@
 ﻿using Business.DTO;
 using Business.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Areas.Reception.Controllers;
 
-[Area("Reception")]
+[Authorize(Roles = "Reception , Admin")]
 public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;

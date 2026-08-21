@@ -36,7 +36,6 @@ builder.Services
 
         // Sign-in
         options.SignIn.RequireConfirmedAccount = true;
-        options.SignIn.RequireConfirmedEmail = true;
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -74,12 +73,16 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+    name: "root",
+    pattern: "",
+    defaults: new
+    {
+        controller = "Account",
+        action = "Login"
+    });
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Reception}/{controller=Dashboard}/{action=Index}/{id?}");
-
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();

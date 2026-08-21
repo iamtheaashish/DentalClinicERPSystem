@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DentalClinicERPSystem.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 
@@ -6,21 +7,21 @@ namespace Web.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
     public AccountController(
-        UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager)
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Login()
+    public IActionResult Login()
     {
-        return View();
+        return View(new LoginViewModel());
     }
 
     [HttpPost]
@@ -32,16 +33,27 @@ public class AccountController : Controller
         var result = await _signInManager.PasswordSignInAsync(
             model.Email,
             model.Password,
-            isPersistent: model.RememberMe,
+            model.RememberMe,
             lockoutOnFailure: true);
 
         if (result.Succeeded)
-            return RedirectToAction("Index", "Home");
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
 
         if (result.IsLockedOut)
             return View("Lockout");
 
-        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        if (result.IsNotAllowed)
+        {
+            ModelState.AddModelError("", "Login is not allowed for this account.");
+            return View(model);
+        }
+
+        ModelState.AddModelError(
+            string.Empty,
+            "Invalid login attempt.");
+
         return View(model);
     }
 }
