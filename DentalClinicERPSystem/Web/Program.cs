@@ -5,6 +5,7 @@ using Business.Services;
 using Microsoft.AspNetCore.Identity;
 using Web.Identity;
 using DentalClinicERPSystem.Domain.Entities;
+using Web.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +60,10 @@ using (var scope = app.Services.CreateScope())
     await IdentitySeeder.SeedRolesAsync(roleManager);
 
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-    await IdentitySeeder.SeedAdminAsync(userManager);
+    await IdentitySeeder.SeedUsersAsync(userManager);
+    
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await TestDataSeeder.SeedAsync(context, userManager);
 }
 
 // Configure the HTTP request pipeline.
