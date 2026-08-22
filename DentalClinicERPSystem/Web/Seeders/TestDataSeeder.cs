@@ -140,7 +140,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[0].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(1).Date.AddHours(10),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(1).AddHours(10),
                 DurationInMinutes = 30,
                 AppointmentType = "Routine Checkup",
                 ChiefComplaint = "Regular dental examination",
@@ -150,7 +150,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[1].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(1).Date.AddHours(11),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(1).AddHours(11),
                 DurationInMinutes = 60,
                 AppointmentType = "Cleaning",
                 ChiefComplaint = "Teeth cleaning and plaque buildup",
@@ -160,7 +160,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[2].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(2).Date.AddHours(10),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(2).AddHours(10),
                 DurationInMinutes = 90,
                 AppointmentType = "Root Canal",
                 ChiefComplaint = "Severe pain in upper right molar",
@@ -170,7 +170,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[3].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(-1).Date.AddHours(9),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(-1).AddHours(9),
                 DurationInMinutes = 30,
                 AppointmentType = "Consultation",
                 ChiefComplaint = "Tooth sensitivity",
@@ -180,7 +180,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[4].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(-2).Date.AddHours(14),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(-2).AddHours(14),
                 DurationInMinutes = 45,
                 AppointmentType = "Cleaning",
                 ChiefComplaint = "Routine cleaning",
@@ -190,7 +190,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[5].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(-3).Date.AddHours(11),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(-3).AddHours(11),
                 DurationInMinutes = 60,
                 AppointmentType = "Emergency",
                 ChiefComplaint = "Severe toothache",
@@ -200,7 +200,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[6].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(3).Date.AddHours(15),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(3).AddHours(15),
                 DurationInMinutes = 30,
                 AppointmentType = "Routine Checkup",
                 ChiefComplaint = "Follow-up examination",
@@ -210,7 +210,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[7].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(-4).Date.AddHours(10),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(-4).AddHours(10),
                 DurationInMinutes = 30,
                 AppointmentType = "Consultation",
                 ChiefComplaint = "Gum discomfort",
@@ -220,7 +220,7 @@ public static class TestDataSeeder
             new()
             {
                 PatientId = patientsList[8].Id,
-                ScheduledDateTime = DateTime.Now.AddDays(-5).Date.AddHours(12),
+                ScheduledDateTime = DateTime.UtcNow.Date.AddDays(-5).AddHours(12),
                 DurationInMinutes = 60,
                 AppointmentType = "Root Canal",
                 ChiefComplaint = "Persistent tooth pain",
