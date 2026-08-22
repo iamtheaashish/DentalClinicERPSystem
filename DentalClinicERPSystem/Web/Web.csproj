@@ -19,9 +19,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Dentist\Controllers\" />
-    <Folder Include="Areas\Dentist\Views\" />
-  </ItemGroup>
-
 </Project>

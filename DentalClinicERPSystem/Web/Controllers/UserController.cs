@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Models;
 
-namespace Web.Areas.Admin.Controllers;
+namespace Web.Controllers;
 
-[Area("Admin")]
 [Authorize(Roles = "Admin")]
 public class UserController : Controller
 {

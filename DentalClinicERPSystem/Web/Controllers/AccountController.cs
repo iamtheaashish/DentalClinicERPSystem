@@ -1,4 +1,5 @@
 ﻿using DentalClinicERPSystem.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
@@ -19,7 +20,7 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login()
+    public async Task<IActionResult> Login()
     {
         return View(new LoginViewModel());
     }
@@ -55,5 +56,19 @@ public class AccountController : Controller
             "Invalid login attempt.");
 
         return View(model);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login", "Account");
+    }
+
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> AccessDenied()
+    {
+        return View();
     }
 }

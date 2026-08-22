@@ -4,9 +4,8 @@ using DentalClinicERPSystem.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Areas.Reception.Controllers;
+namespace Web.Controllers;
 
-[Area("Reception")]
 [Authorize(Roles = "Reception,Admin,Dentist")]
 public class PatientController : Controller
 {
