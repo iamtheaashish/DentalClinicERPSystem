@@ -47,30 +47,38 @@
             <hr class="my-2">
 
             <ul class="nav nav-pills flex-column mb-auto gap-1">
-                <li class="nav-item">
-                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Patient" asp-action="Index">
-                        <i class="bi bi-people fs-5"></i>
-                        <span>Patients</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Appointment" asp-action="Index">
-                        <i class="bi bi-calendar-event fs-5"></i>
-                        <span>Appointments</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Billing" asp-action="Index">
-                        <i class="bi bi-receipt fs-5"></i>
-                        <span>Invoice</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white d-flex align-items-center gap-2" asp-area="Admin" asp-controller="User" asp-action="Index">
-                        <i class="bi bi-person-circle fs-5"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
+                @if (User.IsInRole("Admin") || User.IsInRole("Reception"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Patient" asp-action="Index">
+                            <i class="bi bi-people fs-5"></i>
+                            <span>Patients</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Appointment" asp-action="Index">
+                            <i class="bi bi-calendar-event fs-5"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Billing" asp-action="Index">
+                            <i class="bi bi-receipt fs-5"></i>
+                            <span>Invoice</span>
+                        </a>
+                    </li>
+                }
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-flex align-items-center gap-2" asp-area="Admin" asp-controller="User" asp-action="Index">
+                            <i class="bi bi-person-circle fs-5"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                }
+
             </ul>
 
             <div class="pt-3 border-top mt-auto">

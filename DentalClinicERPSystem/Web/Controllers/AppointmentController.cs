@@ -16,6 +16,7 @@ public class AppointmentController : Controller
         _patientService = patientService;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var appointments = await _appointmentService.GetAllAppointmentsAsync();

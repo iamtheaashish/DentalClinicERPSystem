@@ -40,6 +40,7 @@ public class UserController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateUserViewModel model)
     {
         if (!ModelState.IsValid)
