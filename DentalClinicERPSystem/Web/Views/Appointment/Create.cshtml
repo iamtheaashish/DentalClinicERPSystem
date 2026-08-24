@@ -36,9 +36,13 @@
             </div>
 
             <div class="col-md-6">
-                <label asp-for="DentistId" class="form-label fw-semibold text-secondary small"></label>
-                <input asp-for="DentistId" class="form-control form-control-lg bg-light border-0 fs-6" placeholder="Dentist ID (Optional)" />
-                <span asp-validation-for="DentistId" class="text-danger small"></span>
+                <label asp-for="DentistId" class="form-label">Dentist</label>
+                <select asp-for="DentistId"
+                        asp-items="@(new SelectList(Model.Dentists, "Id", "FullName"))"
+                        class="form-select">
+                    <option value="">Select Dentist</option>
+                </select>
+                <span asp-validation-for="DentistId" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">

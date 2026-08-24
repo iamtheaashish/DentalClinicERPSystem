@@ -6,7 +6,7 @@ namespace Business.Interfaces;
 public interface IUserService
 {
     Task<IEnumerable<UserListDto>> GetAllUsersAsync();
-
+    Task<IEnumerable<UserListDto>> GetAllDentistAsync();
     Task<UserListDto?> GetUserByIdAsync(string id);
 
     Task<IdentityResult> CreateUserAsync(CreateUserDto dto);

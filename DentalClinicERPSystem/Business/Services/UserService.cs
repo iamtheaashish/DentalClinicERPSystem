@@ -20,10 +20,7 @@ public class UserService : IUserService
         _roleManager = roleManager;
     }
 
-    public async Task<bool> ActivateUserAsync(string id)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     public async Task<IdentityResult> CreateUserAsync(CreateUserDto dto)
     {
@@ -79,6 +76,22 @@ public class UserService : IUserService
     public async Task<IdentityResult> UpdateUserAsync(UpdateUserDto dto)
     {
         throw new NotImplementedException();
+    }
+
+
+    public async Task<IEnumerable<UserListDto>> GetAllDentistAsync()
+    {
+        var dentistRole = await _userManager.GetUsersInRoleAsync("Dentist");
+        return dentistRole
+                .Where(u => u.IsActive)
+                .Select(u => new UserListDto
+        {
+            Id = u.Id,
+            FullName = u.FirstName + " " + u.LastName,
+            Email = u.Email!,
+            IsActive = u.IsActive,
+            CreatedAt = u.CreatedAt
+        });
     }
 
     Task<IdentityResult> IUserService.ActivateUserAsync(string id)

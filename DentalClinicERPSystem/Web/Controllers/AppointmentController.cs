@@ -10,10 +10,12 @@ public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;
     private readonly IPatientService _patientService;
-    public AppointmentController(IAppointmentService appointmentService, IPatientService patientService)
+    private readonly IUserService _userService;
+    public AppointmentController(IAppointmentService appointmentService, IPatientService patientService, IUserService userService)
     {
         _appointmentService = appointmentService;
         _patientService = patientService;
+        _userService = userService;
     }
 
     [HttpGet]
@@ -27,10 +29,12 @@ public class AppointmentController : Controller
     public async Task<IActionResult> Create()
     {
         var patients = await _patientService.GetRecentPatientAsync();
+        var dentists = await _userService.GetAllDentistAsync();
 
         var model = new CreateAppointmentDto
         {
-            Patients = patients
+            Patients = patients,
+            Dentists = dentists
         };
 
         return View(model);
