@@ -34,6 +34,6 @@ public class AppointmentDto
     public AppointmentStatus Status { get; set; }
 
     public string? DentistId { get; set; }
-
+    public IEnumerable<UserListDto>? Dentists { get; set; }
     public DateTime CreatedAt { get; set; }
 }

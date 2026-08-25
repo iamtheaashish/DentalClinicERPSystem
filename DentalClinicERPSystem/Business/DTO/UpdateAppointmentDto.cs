@@ -5,6 +5,8 @@ namespace Business.DTO;
 
 public class UpdateAppointmentDto
 {
+    [Required]
+    public int PatientId { get; set; }
 
     [Required]
     public DateTime ScheduledDateTime { get; set; } = DateTime.UtcNow;
@@ -28,5 +30,7 @@ public class UpdateAppointmentDto
     public AppointmentStatus Status { get; set; }
 
     public string? DentistId { get; set; }
+    public IEnumerable<UserListDto>? Dentists { get; set; }
+    public IEnumerable<PatientLookup>? Patients { get; set; }
 
 }

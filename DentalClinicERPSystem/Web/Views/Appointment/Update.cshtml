@@ -132,12 +132,15 @@
             <div class="row g-3 mb-4">
 
                 <div class="col-md-6">
-                    <label asp-for="DentistId"
-                           class="form-label fw-semibold"></label>
+                    <label asp-for="DentistId" class="form-label fw-semibold">
+                        Dentist
+                    </label>
 
-                    <input asp-for="DentistId"
-                           class="form-control"
-                           placeholder="Enter dentist ID (optional)" />
+                    <select asp-for="DentistId"
+                            class="form-select"
+                            asp-items="@(new SelectList(Model.Dentists, "Id", "FullName"))">
+                        <option value="">Select Dentist</option>
+                    </select>
 
                     <span asp-validation-for="DentistId"
                           class="text-danger small"></span>

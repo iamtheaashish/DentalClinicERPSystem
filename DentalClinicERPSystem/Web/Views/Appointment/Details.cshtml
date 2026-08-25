@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <label class="form-label fw-bold text-muted mb-1">Dentist</label>
                         <p class="fs-6 text-dark mb-0">
-                            @(string.IsNullOrEmpty(Model.DentistId) ? "Not Assigned" : Model.DentistId)
+                            @(Model.Dentists?.FirstOrDefault(d => d.Id == Model.DentistId)?.FullName ?? "Not Assigned")
                         </p>
                     </div>
 

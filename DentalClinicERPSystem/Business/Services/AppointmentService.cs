@@ -123,6 +123,5 @@ public class AppointmentService : IAppointmentService
         var result = await _context.SaveChangesAsync();
 
         return result > 0;
-
     }
 }

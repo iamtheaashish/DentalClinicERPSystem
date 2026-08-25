@@ -61,17 +61,35 @@ public class AppointmentController : Controller
         {
             return NotFound();
         }
-        return View(appointment);
+        var dentists = await _userService.GetAllDentistAsync();
+
+        var detailDto = new AppointmentDto
+        {
+            ScheduledDateTime = appointment.ScheduledDateTime,
+            DurationInMinutes = appointment.DurationInMinutes,
+            AppointmentType = appointment.AppointmentType,
+            ChiefComplaint = appointment.ChiefComplaint,
+            Notes = appointment.Notes,
+            Status = appointment.Status,
+            DentistId = appointment.DentistId,
+            Dentists = dentists
+        };
+
+        return View(detailDto);
     }
 
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
         var appointment = await _appointmentService.GetAppointmentByIdAsync(id);
+
         if (appointment == null)
         {
             return NotFound();
         }
+
+        var dentists = await _userService.GetAllDentistAsync();
+
         var updateDto = new UpdateAppointmentDto
         {
             ScheduledDateTime = appointment.ScheduledDateTime,
@@ -80,8 +98,10 @@ public class AppointmentController : Controller
             ChiefComplaint = appointment.ChiefComplaint,
             Notes = appointment.Notes,
             Status = appointment.Status,
-            DentistId = appointment.DentistId
+            DentistId = appointment.DentistId,
+            Dentists = dentists
         };
+
         return View(updateDto);
     }
 
