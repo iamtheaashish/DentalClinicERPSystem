@@ -22,6 +22,10 @@ public class AccountController : Controller
     [HttpGet]
     public async Task<IActionResult> Login()
     {
+        if(User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
         return View(new LoginViewModel());
     }
 

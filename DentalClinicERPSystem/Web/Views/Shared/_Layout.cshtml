@@ -68,6 +68,16 @@
                         </a>
                     </li>
                 }
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Dentist"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-flex align-items-center gap-2" asp-controller="Treatment" asp-action="Index">
+                            <i class="bi bi-bandaid fs-5"></i>
+                            <span>Treatment</span>
+                        </a>
+                    </li>
+                }
                 
                 @if (User.IsInRole("Admin"))
                 {
