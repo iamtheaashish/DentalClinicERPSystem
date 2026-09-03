@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260825044421_Treatment")]
+    [Migration("20260827072702_Treatment")]
     partial class Treatment
     {
         /// <inheritdoc />
